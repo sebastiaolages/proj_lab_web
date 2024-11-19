@@ -1,3 +1,8 @@
+# Aplicação de Geolocalização em React
+
+## Descrição
+Este projeto é uma aplicação web desenvolvida em React que permite aos utilizadores partilhar, visualizar e consultar localizações em mapas. Com funcionalidades como histórico de localizações e autenticação por token, a aplicação utiliza uma API para gerir as posições dos utilizadores, garantindo uma experiência segura e eficiente.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
