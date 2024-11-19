@@ -1,0 +1,62 @@
+
+.container_registo {
+  background-color: #000000;
+  text-align: center;
+  padding-bottom: 100%;
+  position: relative;
+  margin-top: 200px;
+}
+
+.paragrafo_registo {
+  padding: 70px 0px 5px 0px;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #1C3144;
+}
+
+#input_registo::placeholder {
+  color: rgb(201, 142, 32);
+}
+
+#input_registo {
+  color: rgb(201, 142, 32);
+  font-size: 13px;
+  padding: 1px 100px 8px 10px;
+}
+
+.div_input_registo {
+  padding-top: 25px;
+}
+
+.div_button_registo {
+  padding-top: 30px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto; 
+    max-width: 200px; 
+    width: 100%; 
+    margin-top: 50px; 
+}
+
+#button_registo {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #000000;
+  background-color: rgb(233, 113, 0);
+  padding: 10px 110px 12px 110px;
+  border-radius: 35px;
+}
+
+.link_message{
+  color: rgb(233, 113, 0);;
+}
+
+.link_login{
+  color: rgb(233, 113, 0);
+}
+

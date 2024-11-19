@@ -1,0 +1,82 @@
+.container_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    flex-direction: column;
+  }
+  
+  .container_login_1,
+  .container_login_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formulario_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.paragrafo_login{
+    padding: 70px 0px 20px 0px;
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #1C3144;
+}
+
+
+
+.div_input_login {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+#username_login{
+    font-size: 15px;
+    padding: 5px 100px 5px 10px;
+    color: rgb(18, 148, 13);
+}
+
+#password_login{
+    font-size: 15px;
+    padding: 5px 100px 5px 10px;
+    
+}
+
+
+.div_login_button {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+#button_login{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    background-color: rgb(233, 113, 0);
+    padding: 20px 100px 20px 100px;
+    border-radius: 35px;
+    margin-bottom: 15px;
+    border: none; 
+}
+.logo-image {
+    max-width: 200px; /* Defina o valor desejado para a largura máxima da imagem */
+    height: auto; /* Mantém a proporção original da imagem */
+  }
+
+  #nao_tem_conta_login {
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: underline;
+    border: none;
+    color: rgb(233, 113, 0);
+    display: flex;
+    justify-content: center;
+  }

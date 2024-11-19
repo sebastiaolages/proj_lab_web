@@ -1,0 +1,220 @@
+http://localhost:3000/registo
+
+
+import React, { useState, useEffect } from "react";
+import Header from "../header";
+import Map from "../Map";
+import "../feed/styled.css";
+
+function Feed() {
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [recentLocation, setRecentLocation] = useState(null);
+  const [recentLocations, setRecentLocations] = useState([]);
+
+  const handleShareLocation = () => {
+    const token = sessionStorage.getItem("token");
+    const body = {
+      Latitude: parseFloat(latitude),
+      Longitude: parseFloat(longitude),
+    };
+
+    // Envia a localização para o servidor
+    fetch("https://api.secureme.me/api/v1/position/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Localização partilhada com sucesso!");
+          setRecentLocation({ latitude, longitude });
+          setRecentLocations([{ latitude, longitude }]);
+        } else {
+          throw new Error("Erro ao partilhar localização.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+
+    // Obtém as localizações do servidor
+    fetch("https://api.secureme.me/api/v1/position/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro ao obter localizações.");
+        }
+      })
+      .then((data) => {
+        if (data.location) {
+          // Define a localização mais recente
+          setRecentLocation({
+            latitude: data.location.Latitude,
+            longitude: data.location.Longitude,
+          });
+          // Define as localizações recentes
+          setRecentLocations([
+            {
+              latitude: data.location.Latitude,
+              longitude: data.location.Longitude,
+            },
+          ]);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleShowLocation = () => {
+    if (latitude !== "" && longitude !== "") {
+      setRecentLocation({ latitude, longitude });
+    }
+  };
+
+  return (
+    <div >
+      <Header />
+      <div className="content_container">
+        <div className="input_container">
+        <label className="letters1">Latitude:</label>
+          <input
+            type="number"
+            value={latitude}
+            onChange={(e) => setLatitude(e.target.value)}
+          />
+           <label className="letters2">Longitude:</label>
+          <input
+            type="number"
+            value={longitude}
+            onChange={(e) => setLongitude(e.target.value)}
+          />
+        </div>
+        <div className="button_container">
+          <button className="search_button" onClick={handleShowLocation}>Procurar</button>
+          <button className="share_button" onClick={handleShareLocation}>Partilhar</button>
+        </div>
+      </div>
+      <Map
+        latitude={recentLocation ? recentLocation.latitude : null}
+        longitude={recentLocation ? recentLocation.longitude : null}
+      />
+      <div className="recent_location_box">
+        <h3>Última Localização</h3>
+        <ul className="last_location">
+          {recentLocations.map((location, index) => (
+            <li key={index}>
+              Latitude: {location.latitude}, Longitude: {location.longitude}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Feed;
+
+
+
+
+
+
+
+
+import React, { useEffect, useRef } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import markerIcon from "../../imagens/marker.png";
+import "../Map/styled.css";
+
+function Map({ latitude, longitude }) {
+  
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    // Verifica se a referência ao mapa é nula
+    if (!mapRef.current) {
+      // Cria o mapa Leaflet 
+      mapRef.current = L.map("map").setView([0, 0], 2);
+
+      
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+      }).addTo(mapRef.current);
+    }
+
+    // Verifica se latitude e longitude estão definidas
+    if (latitude && longitude) {
+      // Define a exibição do mapa com base na latitude e longitude fornecidas
+      mapRef.current.setView([latitude, longitude], 10);
+
+      // Cria um ícone personalizado para o marcador
+      const customIcon = L.icon({
+        iconUrl: markerIcon,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+      });
+
+      // Adiciona um marcador ao mapa na posição fornecida
+      L.marker([latitude, longitude], { icon: customIcon }).addTo(mapRef.current);
+    }
+  }, [latitude, longitude]);
+
+  return <div id="map" className="map-container"></div>;
+}
+
+export default Map;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

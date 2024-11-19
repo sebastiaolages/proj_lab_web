@@ -1,0 +1,70 @@
+button.search_button {
+  background-color: rgb(199, 105, 16);
+  color: rgb(255, 255, 255);
+  margin-right: 5px;
+}
+
+
+.share_button {
+  background-color: rgb(199, 105, 16);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  
+}
+
+.content_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  
+}
+
+.input_container {
+  margin-right: 1px;
+}
+
+.button_container {
+  margin-left: 8px;
+}
+
+.letters1 {
+  margin-right: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.letters2 {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.recent_location_box{
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 70px;
+  top: 60px; 
+  left: 20px; 
+  background-color: rgb(199, 105, 16);
+  padding: 10px;
+  
+  
+}
+
+.recent_location_box{
+  text-align: center;
+}
+
+
+.last_location{
+  list-style: none;
+  padding-right: 10px;
+}
+

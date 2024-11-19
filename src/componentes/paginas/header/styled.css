@@ -1,0 +1,48 @@
+.container_header {
+    background-color: rgb(233, 113, 0);;
+    display: flex;
+    align-items: center;
+    padding: 0; /* Remova o padding */
+    height: 50px; /* Defina a altura desejada da barra aqui */
+  }
+ 
+.link_button_header1 {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 40px;
+  }
+
+.link_button_header2 {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 1480px;
+    margin-left: 40px;
+  }
+
+.link_button_header3 {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: auto; 
+    margin-right: 10px;
+  }
+
+.link_button_header1,
+.link_button_header2,
+.link_button_header3 {
+  font-size: 18px; 
+  font-weight: bold;
+}
+  
+.logo_imagem_header {
+    height: 100%; 
+    width: auto;
+    margin: 0; 
+  }
+  
